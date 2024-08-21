@@ -1,0 +1,46 @@
+feature_extract_enable : 0
+point_filter_num : 4
+max_iteration : 10
+dense_map_enable : 1
+filter_size_surf : 0.5 # 0.3
+filter_size_map : 0.5 # 0.4
+cube_side_length : 20 
+grid_size : 40
+patch_size : 8
+img_enable : 1
+lidar_enable : 1
+outlier_threshold : 50
+ncc_en: true
+ncc_thre: 0.5
+img_point_cov : 100
+laser_point_cov : 0.001
+delta_time: 0.0
+
+common:
+    lid_topic:  "/ouster/points"
+    imu_topic:  "/ouster/imu"
+
+preprocess:
+    lidar_type: 3  # Ouster
+    scan_line: 128
+    blind: 0.65 # blind x m disable
+
+mapping:
+    acc_cov_scale: 100 #10
+    gyr_cov_scale: 10000 #10
+    extrinsic_T: [-0.00625, 0.011775, 0.028535]
+    extrinsic_R: [ 1, 0, 0,
+                   0, 1, 0,
+                   0, 0, 1]
+
+pcd_save:
+    pcd_save_en: false
+
+camera:
+    img_topic: /filtered_image
+    # NTU_VIRAL
+    Rcl: [ 1, 0, 0,
+           0, 1, 0,
+           0, 0, 1]
+    Pcl: [0, 0, 0]
+
